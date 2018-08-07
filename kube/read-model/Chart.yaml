@@ -1,0 +1,4 @@
+apiVersion: v1
+description: KSQL server with queries to generate read model for Midnight Lizard schemes
+name: read-model
+version: 0.1.0

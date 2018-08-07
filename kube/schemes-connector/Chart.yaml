@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Elastic Search Kafka Connector
+name: es-connector
+version: 0.1.0

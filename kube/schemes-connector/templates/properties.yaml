@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "name" . }}-config
+  labels:
+    app: {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  connector.properties: |-
+    {{- range $key, $val := .Values.connector }}
+    {{ $key }}={{ $val }}
+    {{- end }}
+  worker.properties: |-
+    {{- range $key, $val := .Values.worker }}
+    {{ $key }}={{ $val }}
+    {{- end }}
+  connect-log4j.properties: |-
+    {{- range $key, $val := .Values.log4j }}
+    {{ $key }}={{ $val }}
+    {{- end }}

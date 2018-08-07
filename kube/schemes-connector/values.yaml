@@ -1,0 +1,112 @@
+replicaCount: 1
+image: debezium/connect:0.8.0.Final
+pullPolicy: IfNotPresent
+persistentVolumeClaimName: identity-connector-pvc
+affinity:
+  weight: 100
+  apps: [ "iddb" ]
+postgresPasswordSecret:
+  secretName: iddb-secret
+  secretKey: password
+connector:
+  name: postgresql
+  connector.class: io.debezium.connector.postgresql.PostgresConnector
+  database.hostname: iddb
+  database.port: 5432
+  database.user: postgres
+  database.password: POSTGRES_PASSWORD
+  database.dbname: iddb
+  database.server.name: iddb
+  table.blacklist: "\
+    public.__EFMigrationsHistory,\
+    public.PersistedGrants,\
+    public.AspNetUserTokens"
+  column.blacklist: "\
+    public.AspNetRoles.ConcurrencyStamp,\
+    public.AspNetUsers.AccessFailedCount,\
+    public.AspNetUsers.ConcurrencyStamp,\
+    public.AspNetUsers.LockoutEnabled,\
+    public.AspNetUsers.LockoutEnd,\
+    public.AspNetUsers.PasswordHash,\
+    public.AspNetUsers.SecurityStamp,\
+    public.AspNetUsers.TwoFactorEnabled"
+  snapshot.select.statement.overrides: "\
+    public.AspNetRoleClaims,\
+    public.AspNetRoles,\
+    public.AspNetUserClaims,\
+    public.AspNetUserLogins,\
+    public.AspNetUserRoles,\
+    public.AspNetUsers"
+  snapshot.select.statement.overrides.public.AspNetRoleClaims: >-
+    select
+    coalesce("Id", -1),
+    coalesce("RoleId", ''),
+    coalesce("ClaimType", ''),
+    coalesce("ClaimValue", '')
+    from (values(1)) v left join public."AspNetRoleClaims" on 1=1
+  snapshot.select.statement.overrides.public.AspNetRoles: >-
+    select
+    coalesce("Id", ''),
+    coalesce("Name", ''),
+    coalesce("NormalizedName", ''),
+    coalesce("ConcurrencyStamp", '')
+    from (values(1)) v left join public."AspNetRoles" on 1=1
+  snapshot.select.statement.overrides.public.AspNetUserClaims: >-
+    select
+    coalesce("Id", -1),
+    coalesce("UserId", ''),
+    coalesce("ClaimType", ''),
+    coalesce("ClaimValue", '')
+    from (values(1)) v left join public."AspNetUserClaims" on 1=1
+  snapshot.select.statement.overrides.public.AspNetUserLogins: >-
+    select
+    coalesce("LoginProvider", ''),
+    coalesce("ProviderKey", ''),
+    coalesce("ProviderDisplayName", ''),
+    coalesce("UserId", '')
+    from (values(1)) v left join public."AspNetUserLogins" on 1=1
+  snapshot.select.statement.overrides.public.AspNetUserRoles: >-
+    select
+    coalesce("UserId", ''),
+    coalesce("RoleId", '')
+    from (values(1)) v left join public."AspNetUserRoles" on 1=1
+  snapshot.select.statement.overrides.public.AspNetUsers: >-
+    select
+    coalesce("Id", ''),
+    coalesce("UserName", ''),
+    coalesce("DisplayName", ''),
+    coalesce("NormalizedUserName", ''),
+    coalesce("Email", ''),
+    coalesce("NormalizedEmail", ''),
+    coalesce("EmailConfirmed", false),
+    coalesce("PasswordHash", ''),
+    coalesce("SecurityStamp", ''),
+    coalesce("ConcurrencyStamp", ''),
+    coalesce("PhoneNumber", ''),
+    coalesce("PhoneNumberConfirmed", false),
+    coalesce("TwoFactorEnabled", false),
+    coalesce("LockoutEnd", current_timestamp),
+    coalesce("LockoutEnabled", false),
+    coalesce("AccessFailedCount", 0)
+    from (values(1)) v left join public."AspNetUsers" on 1=1
+worker:
+  bootstrap.servers: bootstrap.kafka:9092
+  key.converter: org.apache.kafka.connect.json.JsonConverter
+  value.converter: org.apache.kafka.connect.json.JsonConverter
+  key.converter.schemas.enable: false
+  value.converter.schemas.enable: false
+  internal.key.converter: org.apache.kafka.connect.json.JsonConverter
+  internal.value.converter: org.apache.kafka.connect.json.JsonConverter
+  internal.key.converter.schemas.enable: false
+  internal.value.converter.schemas.enable: false
+  offset.storage.file.filename: /usr/tmp/connect.offsets
+  offset.flush.interval.ms: 30000
+  plugin.path: /kafka/connect
+log4j:
+  log4j.rootLogger: INFO, stdout
+  log4j.appender.stdout: org.apache.log4j.ConsoleAppender
+  log4j.appender.stdout.layout: org.apache.log4j.PatternLayout
+  log4j.appender.stdout.layout.ConversionPattern: "[%d] %p %m (%c:%L)%n"
+  log4j.logger.org.apache.zookeeper: ERROR
+  log4j.logger.org.I0Itec.zkclient: ERROR
+  log4j.logger.org.reflections: ERROR

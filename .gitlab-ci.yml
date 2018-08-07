@@ -1,0 +1,18 @@
+image: docker:latest
+services:
+- docker:dind
+variables:
+  DOCKER_DRIVER: overlay
+
+gce-deploy:
+  image: google/cloud-sdk
+  stage: deploy
+  only:
+  - master
+  script:
+  - chmod +x ./shell/gcloud-config.sh
+  - chmod +x ./shell/helm-deploy.sh
+  - ./shell/gcloud-config.sh -k "$GCE_KEY" -z $GCE_CLUSTER_ZONE -p $GCE_PROJECT -c $GCE_CLUSTER_NAME
+  - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+  - helm upgrade --install schemes-read-model ./kube/read-model
+  - helm upgrade --install schemes-connector ./kube/es-connector
