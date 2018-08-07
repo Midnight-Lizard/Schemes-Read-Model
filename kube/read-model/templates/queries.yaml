@@ -14,6 +14,6 @@ data:
 {{ (.Files.Get "queries/__DROP_ALL.sql") | indent $idt }}
 {{- end }}
 {{- $root := . }}
-{{- range $path, $bytes := .Files.Glob "queries/A*" }}
+{{- range $path := .Files.Glob "queries/[0-9]*" | toYaml | fromYaml | keys | sortAlpha }}
 {{ ($root.Files.Get $path) | indent $idt }}
 {{- end }}
