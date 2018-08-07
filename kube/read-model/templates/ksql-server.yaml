@@ -12,7 +12,6 @@ spec:
   revisionHistoryLimit: 0
   strategy:
     type: Recreate
-    rollingUpdate: null
   selector:
     matchLabels:
       app: {{ template "name" . }}
