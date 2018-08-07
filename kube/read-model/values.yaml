@@ -4,7 +4,7 @@ pullPolicy: IfNotPresent
 dropAll: false
 env:
   KSQL_BOOTSTRAP_SERVERS: bootstrap.kafka:9092
-  KSQL_KSQL_SERVICE_ID: identity_compactor_
+  KSQL_KSQL_SERVICE_ID: shcmes_read_model_
   KSQL_KSQL_QUERIES_FILE: /usr/ksql/queries
   KSQL_AUTO_OFFSET_RESET: earliest
-  KSQL_KSQL_SINK_PARTITIONS: 1
+  KSQL_KSQL_SINK_PARTITIONS: 2
