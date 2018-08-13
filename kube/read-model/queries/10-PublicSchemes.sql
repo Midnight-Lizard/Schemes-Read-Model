@@ -5,7 +5,7 @@ CREATE STREAM Stream_PublicSchemes (
   RequestTimestamp VARCHAR,
   UserId VARCHAR,
   Payload STRUCT<
-    Id VARCHAR
+    Id VARCHAR,
     AggregateId VARCHAR,
     Generation INTEGER,
     ColorScheme STRUCT<
