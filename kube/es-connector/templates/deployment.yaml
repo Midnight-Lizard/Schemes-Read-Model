@@ -54,10 +54,6 @@ spec:
             - name: {{ $key }}
               value: {{ $val | quote }}
             {{- end }}
-          resources:
-            limits:
-              cpu: "1"
-              memory: "1024Mi"
       volumes:
         - name: config-volume
           configMap:
