@@ -16,7 +16,3 @@ data:
     {{- range $key, $val := .Values.worker }}
     {{ $key }}={{ $val }}
     {{- end }}
-  connect-log4j.properties: |-
-    {{- range $key, $val := .Values.log4j }}
-    {{ $key }}={{ $val }}
-    {{- end }}

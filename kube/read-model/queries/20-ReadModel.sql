@@ -1,5 +1,5 @@
 CREATE STREAM PublicSchemes_WithUsers WITH (
-    KAFKA_TOPIC = 'ksql-stream_read-model_public-events',
+    KAFKA_TOPIC = 'ksql-stream_read-model_public-schemes',
     VALUE_FORMAT = 'JSON') AS
   SELECT
     event.Payload->AggregateId as Id,

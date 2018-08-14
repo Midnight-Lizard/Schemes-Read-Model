@@ -1,0 +1,41 @@
+replicaCount: 1
+image: confluentinc/cp-kafka-connect:5.0.0
+pullPolicy: IfNotPresent
+persistentVolumeClaimName: schemes-read-model-connector-pvc
+connector:
+  name: elasticsearch-sink
+  connector.class: io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+  connection.url: http://ml-es-elasticsearch-client.default.svc.cluster.local:9200
+  topics: ksql-stream_read-model_public-schemes
+  type.name: schemes-read-model
+  tasks.max: 1
+  key.ignore: false
+  schema.ignore: true
+worker:
+  bootstrap.servers: bootstrap.kafka:9092
+  key.converter: org.apache.kafka.connect.storage.StringConverter
+  value.converter: org.apache.kafka.connect.json.JsonConverter
+  key.converter.schemas.enable: false
+  value.converter.schemas.enable: false
+  offset.storage.file.filename: /usr/tmp/connect.offsets
+  offset.flush.interval.ms: 30000
+  plugin.path: /usr/share/java
+env:
+  CONNECT_BOOTSTRAP_SERVERS: bootstrap.kafka:9092
+  CONNECT_REST_ADVERTISED_HOST_NAME: localhost
+  CONNECT_REST_PORT: 8083
+  CONNECT_PLUGIN_PATH: /usr/share/java
+  CONNECT_GROUP_ID: schemes_read_model_connector_
+  CONNECT_CONFIG_STORAGE_TOPIC: schemes-read-model-connector-config
+  CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+  CONNECT_OFFSET_FLUSH_INTERVAL_MS: 30000
+  CONNECT_OFFSET_STORAGE_FILE_FILENAME: /usr/tmp/connect.offsets
+  CONNECT_OFFSET_STORAGE_TOPIC: schemes-read-model-connector-offsets
+  CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+  CONNECT_STATUS_STORAGE_TOPIC: schemes-read-model-connector-status
+  CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+  CONNECT_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+  CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+  CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: false
+  CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: false
+  CONNECT_ZOOKEEPER_CONNECT: 'zookeeper.kafka:2181'
