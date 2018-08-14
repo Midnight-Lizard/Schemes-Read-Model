@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: schemes-connector-pv
+  name: schemes-read-model-connector-pv
 spec:
   capacity:
     storage: 10Mi
