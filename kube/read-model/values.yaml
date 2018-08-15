@@ -7,3 +7,4 @@ env:
   KSQL_KSQL_QUERIES_FILE: /usr/ksql/queries
   KSQL_AUTO_OFFSET_RESET: earliest
   KSQL_KSQL_SINK_PARTITIONS: 1
+  KSQL_LISTENERS: http://localhost:8088/

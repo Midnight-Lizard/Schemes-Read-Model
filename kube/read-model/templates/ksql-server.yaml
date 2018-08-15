@@ -28,7 +28,7 @@ spec:
           image: {{ .Values.image | quote }}
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8083
+            - containerPort: 8088
               protocol: TCP
           env:
             {{- range $key, $val := .Values.env }}
