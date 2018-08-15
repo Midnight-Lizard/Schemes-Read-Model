@@ -3,6 +3,7 @@ CREATE STREAM PublicSchemes_WithUsers WITH (
     VALUE_FORMAT = 'JSON') AS
   SELECT
     event.Payload->AggregateId as Id,
+    event.Type as EventType,
     event.Payload->ColorScheme as ColorScheme,
     event.Payload->ColorScheme->colorSchemeName as Name,
     EXTRACTJSONFIELD('[\"dark\", \"light\"]', '$[' + CAST(ROUND(CAST(event.Payload->ColorScheme->backgroundLightnessLimit as DOUBLE) / 100) as VARCHAR) + ']') as Side,
@@ -11,5 +12,4 @@ CREATE STREAM PublicSchemes_WithUsers WITH (
     user.NormalizedRoleName = 'OWNER' as PublisherCommunity
   FROM Stream_PublicSchemes event
   LEFT JOIN AspNetUsers user ON user.UserId = event.UserId
-  WHERE event.Type = 'SchemePublishedEvent'
   PARTITION BY Id;
