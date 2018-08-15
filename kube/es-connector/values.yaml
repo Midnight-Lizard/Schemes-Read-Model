@@ -6,11 +6,12 @@ connector:
   name: elasticsearch-sink
   connector.class: io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
   connection.url: http://ml-es-elasticsearch-client.default.svc.cluster.local:9200
-  topics: ksql-stream_read-model_public-schemes
+  topics: ksql-table_read-model_public-schemes
   type.name: schemes-read-model
   tasks.max: 1
   key.ignore: false
   schema.ignore: true
+  behavior.on.null.values: delete
 worker:
   bootstrap.servers: bootstrap.kafka:9092
   key.converter: org.apache.kafka.connect.storage.StringConverter
