@@ -34,7 +34,10 @@ spec:
           command: ["bash"]
           args:
             - -c
-            - /usr/bin/connect-standalone /usr/config/worker.properties /usr/config/connector.properties
+            - >-
+              mv /usr/share/java/kafka-connect-elasticsearch /usr/share/java/kc-es &&
+              rm -rf /usr/share/java/kafka-connect-* &&
+              /usr/bin/connect-standalone /usr/config/worker.properties /usr/config/connector.properties
           volumeMounts:
             - name: config-volume
               mountPath: /usr/config
