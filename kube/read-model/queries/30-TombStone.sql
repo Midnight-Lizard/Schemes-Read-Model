@@ -1,6 +1,7 @@
 CREATE TABLE Table_PublicSchemes_WithUsers (
   Id VARCHAR,
   EventType VARCHAR,
+  SchemaVersion VARCHAR,
   ColorScheme STRUCT<
     colorSchemeId VARCHAR,
     colorSchemeName VARCHAR,
@@ -75,7 +76,7 @@ CREATE TABLE Table_PublicSchemes_WithTombstone WITH (
     KAFKA_TOPIC = 'ksql-table_read-model_public-schemes',
     VALUE_FORMAT = 'JSON') AS
   SELECT
-    Id, Name, Side, ColorScheme,
+    Id, SchemaVersion, Name, Side, ColorScheme,
     PublisherId, PublisherName, PublisherCommunity
   FROM Table_PublicSchemes_WithUsers
   WHERE EventType = 'SchemePublishedEvent';
