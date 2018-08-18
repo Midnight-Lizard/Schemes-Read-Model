@@ -10,7 +10,7 @@ CREATE STREAM PublicSchemes_WithUsers WITH (
     EXTRACTJSONFIELD('[\"dark\", \"light\"]', '$[' + CAST(ROUND(CAST(event.Payload->ColorScheme->backgroundLightnessLimit as DOUBLE) / 100) as VARCHAR) + ']') as Side,
     user.UserId as PublisherId,
     user.DisplayName as PublisherName,
-    user.NormalizedRoleName = 'OWNER' as PublisherCommunity
+    user.NormalizedRoleName <> 'OWNER' as PublisherCommunity
   FROM Stream_PublicSchemes event
   LEFT JOIN AspNetUsers user ON user.UserId = event.UserId
   PARTITION BY Id;
