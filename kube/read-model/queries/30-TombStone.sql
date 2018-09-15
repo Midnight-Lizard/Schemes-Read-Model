@@ -65,7 +65,6 @@ CREATE TABLE Table_PublicSchemes_WithUsers (
     scrollbarSize INTEGER,
     scrollbarStyle VARCHAR>,
   Name VARCHAR,
-  Side VARCHAR,
   PublisherId VARCHAR,
   PublisherName VARCHAR,
   PublisherCommunity VARCHAR) WITH (
@@ -77,7 +76,7 @@ CREATE TABLE Table_PublicSchemes_WithTombstone WITH (
     KAFKA_TOPIC = 'ksql-table_read-model_public-schemes',
     VALUE_FORMAT = 'JSON') AS
   SELECT
-    Id, SchemaVersion, Name, Side, ColorScheme,
+    Id, SchemaVersion, Name, ColorScheme,
     PublisherId, PublisherName, PublisherCommunity,
     Generation
   FROM Table_PublicSchemes_WithUsers
