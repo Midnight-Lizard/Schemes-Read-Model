@@ -2,6 +2,7 @@ CREATE TABLE Table_PublicSchemes_WithUsers (
   Id VARCHAR,
   EventType VARCHAR,
   SchemaVersion VARCHAR,
+  Generation INTEGER,
   ColorScheme STRUCT<
     colorSchemeId VARCHAR,
     colorSchemeName VARCHAR,
@@ -77,6 +78,7 @@ CREATE TABLE Table_PublicSchemes_WithTombstone WITH (
     VALUE_FORMAT = 'JSON') AS
   SELECT
     Id, SchemaVersion, Name, Side, ColorScheme,
-    PublisherId, PublisherName, PublisherCommunity
+    PublisherId, PublisherName, PublisherCommunity,
+    Generation
   FROM Table_PublicSchemes_WithUsers
   WHERE EventType = 'SchemePublishedEvent';
