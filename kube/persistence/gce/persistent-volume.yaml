@@ -2,6 +2,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: schemes-read-model-connector-pv
+  labels:
+    app: schemes-read-model-connector
 spec:
   capacity:
     storage: 10Mi
@@ -10,5 +12,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
   gcePersistentDisk:
-    pdName: ml-small-disk
+    pdName: ml-small-disk-2
     fsType: ext4

@@ -9,3 +9,6 @@ spec:
   resources:
     requests:
       storage: 10Mi
+  selector:
+    matchLabels:
+      app: schemes-read-model-connector
