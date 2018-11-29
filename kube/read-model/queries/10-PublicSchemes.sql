@@ -68,5 +68,7 @@ CREATE STREAM Stream_PublicSchemes (
       scrollbarLightnessLimit INTEGER,
       scrollbarGrayHue INTEGER,
       scrollbarSize INTEGER,
-      scrollbarStyle VARCHAR>>)
+      scrollbarStyle VARCHAR,
+      maxBackgroundImageSize INTEGER,
+      hideBigBackgroundImages BOOLEAN>>)
   WITH (KAFKA_TOPIC = 'schemes-events-a', VALUE_FORMAT = 'JSON');
