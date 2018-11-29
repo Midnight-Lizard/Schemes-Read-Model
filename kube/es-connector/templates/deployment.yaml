@@ -59,9 +59,9 @@ spec:
             {{- end }}
           resources:
             requests:
-              memory: "800Mi"
-            limits:
               memory: "1G"
+            limits:
+              memory: "1.2G"
       volumes:
         - name: config-volume
           configMap:
