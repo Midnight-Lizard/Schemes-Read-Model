@@ -59,7 +59,7 @@ spec:
             {{- end }}
           resources:
             limits:
-              memory: "2G"
+              memory: "1.2G"
       volumes:
         - name: config-volume
           configMap:
