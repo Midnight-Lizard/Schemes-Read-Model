@@ -58,6 +58,8 @@ spec:
               value: {{ $val | quote }}
             {{- end }}
           resources:
+            requests:
+              memory: "800Mi"
             limits:
               memory: "1G"
       volumes:
