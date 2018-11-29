@@ -1,7 +1,7 @@
 replicaCount: 1
 image: confluentinc/cp-kafka-connect:5.0.0
 pullPolicy: IfNotPresent
-persistentVolumeClaimName: schemes-read-model-connector-pvc
+persistentVolumeClaimName: schemes-read-model-connector-pvc-2
 connector:
   name: elasticsearch-sink
   connector.class: io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
