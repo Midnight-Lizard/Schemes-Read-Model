@@ -8,6 +8,7 @@ CREATE STREAM Stream_PublicSchemes (
     Id VARCHAR,
     AggregateId VARCHAR,
     Generation INTEGER,
+    Description VARCHAR,
     ColorScheme STRUCT<
       colorSchemeId VARCHAR,
       colorSchemeName VARCHAR,

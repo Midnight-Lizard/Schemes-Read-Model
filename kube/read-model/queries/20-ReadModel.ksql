@@ -6,6 +6,7 @@ CREATE STREAM PublicSchemes_WithUsers WITH (
     event.Type as EventType,
     event.Version as SchemaVersion,
     event.Payload->Generation as Generation,
+    event.Payload->Description as Description,
     event.Payload->ColorScheme as ColorScheme,
     event.Payload->ColorScheme->colorSchemeName as Name,
     user.UserId as PublisherId,

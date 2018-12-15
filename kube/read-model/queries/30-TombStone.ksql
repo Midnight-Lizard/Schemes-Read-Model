@@ -3,6 +3,7 @@ CREATE TABLE Table_PublicSchemes_WithUsers (
   EventType VARCHAR,
   SchemaVersion VARCHAR,
   Generation INTEGER,
+  Description VARCHAR,
   ColorScheme STRUCT<
     colorSchemeId VARCHAR,
     colorSchemeName VARCHAR,
@@ -80,6 +81,6 @@ CREATE TABLE Table_PublicSchemes_WithTombstone WITH (
   SELECT
     Id, SchemaVersion, Name, ColorScheme,
     PublisherId, PublisherName, PublisherCommunity,
-    Generation
+    Generation, Description
   FROM Table_PublicSchemes_WithUsers
   WHERE EventType = 'SchemePublishedEvent';
