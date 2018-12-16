@@ -14,5 +14,5 @@ CREATE STREAM PublicSchemes_WithUsers WITH (
     user.NormalizedRoleName <> 'OWNER' as PublisherCommunity
   FROM Stream_PublicSchemes event
   LEFT JOIN AspNetUsers user ON user.UserId = event.UserId
-  WHERE EventType = 'SchemePublishedEvent' OR EventType = 'SchemeUnpublishedEvent'
+  WHERE event.Type = 'SchemePublishedEvent' OR event.Type = 'SchemeUnpublishedEvent'
   PARTITION BY Id;
