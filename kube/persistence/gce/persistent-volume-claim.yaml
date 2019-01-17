@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: schemes-read-model-connector-pvc-2
+  name: schemes-read-model-connector-pvc
 spec:
   accessModes:
     - ReadWriteOnce
