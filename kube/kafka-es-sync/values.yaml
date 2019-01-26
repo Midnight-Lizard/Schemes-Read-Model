@@ -23,7 +23,7 @@ env:
     ]
   KAFKA_CONSUMER_CONFIG: |-
     {
-      "group.id": "schemes_read_model_kafka_es_sync",
+      "group.id": "schemes_read_model_kafka_es_sync_a",
       "bootstrap.servers": "bootstrap.kafka:9092",
       "partition.assignment.strategy": "range",
       "enable.auto.commit": false,

@@ -59,11 +59,12 @@ namespace MidnightLizard.KafkaConnect.ElasticSearch.Services
 
         public async Task UpsertDocument(string docId, string doc)
         {
-            var postData = PostData.String($"{{ doc: {doc}, \"doc_as_upsert\" : true }}");
+            var postData = PostData.String($"{{ \"doc\": {doc}, \"doc_as_upsert\" : true }}");
             var result = await elasticClient.UpdateAsync<StringResponse>(
                  this.elasticSearchConfig.ELASTIC_SEARCH_INDEX_NAME,
                  this.elasticSearchConfig.ELASTIC_SEARCH_INDEX_TYPE_NAME,
                  docId, postData);
+            this.HandleErrors(result);
         }
     }
 }
