@@ -27,5 +27,4 @@ gce-deploy:
   - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
   - helm init --upgrade
   - helm upgrade --install schemes-read-model ./kube/read-model
-  # - helm upgrade --install schemes-read-model-connector ./kube/es-connector
   - helm upgrade --install --set image="$CI_REGISTRY/$GROUP/$PROJ/$APP:$CI_PIPELINE_ID" $PROJ-$APP ./kube/$APP
