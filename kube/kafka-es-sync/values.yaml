@@ -1,0 +1,32 @@
+image: schemes-read-model-kafka-es-sync:latest
+internalPort: 80
+replicaCount: 1
+pullPolicy: IfNotPresent
+livenessProbe:
+  path: /status/isalive
+  initialDelaySeconds: 60
+  periodSeconds: 60
+  timeoutSeconds: 10
+readinessProbe:
+  path: /status/isready
+  initialDelaySeconds: 30
+  periodSeconds: 20
+  timeoutSeconds: 5
+env:
+  ELASTIC_SEARCH_CLIENT_URL: http://ml-es-elasticsearch-client.default.svc.cluster.local:9200
+  ELASTIC_SEARCH_INDEX_NAME: schemes-read-model
+  ELASTIC_SEARCH_INDEX_TYPE_NAME: data
+  ELASTIC_SEARCH_REQUEST_TIMEOUT_SEC: 60
+  KAFKA_TOPICS: |-
+    [
+      "ksql-table_read-model_public-schemes"
+    ]
+  KAFKA_CONSUMER_CONFIG: |-
+    {
+      "group.id": "schemes_read_model_kafka_es_sync",
+      "bootstrap.servers": "bootstrap.kafka:9092",
+      "partition.assignment.strategy": "range",
+      "enable.auto.commit": false,
+      "auto.commit.interval.ms": 1000,
+      "auto.offset.reset": "earliest"
+    }
