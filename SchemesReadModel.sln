@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidnightLizard.KafkaConnect
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{DA599C06-3716-484E-9586-ED15717CEDEA}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "kube", "kube\", "{FBB76090-CAA1-4F40-A979-1C28808BE4F4}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "kube(1)", "kube\", "{FBB76090-CAA1-4F40-A979-1C28808BE4F4}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50850"
@@ -36,7 +36,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "kube", "kube\", "{FBB76090-
 		SlnRelativePath = "kube\"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "shell", "shell\", "{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "shell(1)", "shell\", "{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50856"
@@ -75,13 +75,11 @@ Global
 		{FBB76090-CAA1-4F40-A979-1C28808BE4F4}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBB76090-CAA1-4F40-A979-1C28808BE4F4}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{FBB76090-CAA1-4F40-A979-1C28808BE4F4}.Test|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBB76090-CAA1-4F40-A979-1C28808BE4F4}.Test|Any CPU.Build.0 = Debug|Any CPU
 		{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}.Test|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D69A82F-1024-4A35-BE41-2CD2E94CDC24}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
