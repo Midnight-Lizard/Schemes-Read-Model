@@ -11,7 +11,7 @@ CREATE STREAM PublicSchemes_WithUsers WITH (
     event.Payload->ColorScheme->colorSchemeName as Name,
     user.UserId as PublisherId,
     user.DisplayName as PublisherName,
-    user.NormalizedRoleName <> 'OWNER' as PublisherCommunity
+    user.NormalizedRoleName IS NULL as PublisherCommunity
   FROM Stream_PublicSchemes event
   LEFT JOIN AspNetUsers user ON user.UserId = event.UserId
   WHERE event.Type = 'SchemePublishedEvent' OR event.Type = 'SchemeUnpublishedEvent'
