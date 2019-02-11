@@ -1,0 +1,296 @@
+{
+  "properties": {
+    "COLORSCHEME": {
+      "properties": {
+        "BACKGROUNDCONTRAST": {
+          "type": "long"
+        },
+        "BACKGROUNDGRAYHUE": {
+          "type": "long"
+        },
+        "BACKGROUNDGRAYSATURATION": {
+          "type": "long"
+        },
+        "BACKGROUNDHUEGRAVITY": {
+          "type": "long"
+        },
+        "BACKGROUNDIMAGELIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "BACKGROUNDIMAGESATURATIONLIMIT": {
+          "type": "long"
+        },
+        "BACKGROUNDLIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "BACKGROUNDREPLACEALLHUES": {
+          "type": "boolean"
+        },
+        "BACKGROUNDSATURATIONLIMIT": {
+          "type": "long"
+        },
+        "BLUEFILTER": {
+          "type": "long"
+        },
+        "BORDERCONTRAST": {
+          "type": "long"
+        },
+        "BORDERGRAYHUE": {
+          "type": "long"
+        },
+        "BORDERGRAYSATURATION": {
+          "type": "long"
+        },
+        "BORDERHUEGRAVITY": {
+          "type": "long"
+        },
+        "BORDERLIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "BORDERREPLACEALLHUES": {
+          "type": "boolean"
+        },
+        "BORDERSATURATIONLIMIT": {
+          "type": "long"
+        },
+        "BUTTONCONTRAST": {
+          "type": "long"
+        },
+        "BUTTONGRAYHUE": {
+          "type": "long"
+        },
+        "BUTTONGRAYSATURATION": {
+          "type": "long"
+        },
+        "BUTTONHUEGRAVITY": {
+          "type": "long"
+        },
+        "BUTTONLIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "BUTTONREPLACEALLHUES": {
+          "type": "boolean"
+        },
+        "BUTTONSATURATIONLIMIT": {
+          "type": "long"
+        },
+        "COLORSCHEMEID": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "COLORSCHEMENAME": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "DONOTINVERTCONTENT": {
+          "type": "boolean"
+        },
+        "EXCLUDEMATCHES": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "HIDEBIGBACKGROUNDIMAGES": {
+          "type": "boolean"
+        },
+        "IMAGELIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "IMAGESATURATIONLIMIT": {
+          "type": "long"
+        },
+        "INCLUDEMATCHES": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "LINKCONTRAST": {
+          "type": "long"
+        },
+        "LINKDEFAULTHUE": {
+          "type": "long"
+        },
+        "LINKDEFAULTSATURATION": {
+          "type": "long"
+        },
+        "LINKHUEGRAVITY": {
+          "type": "long"
+        },
+        "LINKLIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "LINKREPLACEALLHUES": {
+          "type": "boolean"
+        },
+        "LINKSATURATIONLIMIT": {
+          "type": "long"
+        },
+        "LINKVISITEDHUE": {
+          "type": "long"
+        },
+        "MAXBACKGROUNDIMAGESIZE": {
+          "type": "long"
+        },
+        "MODE": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "MODEAUTOSWITCHLIMIT": {
+          "type": "long"
+        },
+        "RUNONTHISSITE": {
+          "type": "boolean"
+        },
+        "SCHEDULEFINISHHOUR": {
+          "type": "long"
+        },
+        "SCHEDULESTARTHOUR": {
+          "type": "long"
+        },
+        "SCROLLBARCONTRAST": {
+          "type": "long"
+        },
+        "SCROLLBARGRAYHUE": {
+          "type": "long"
+        },
+        "SCROLLBARLIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "SCROLLBARSATURATIONLIMIT": {
+          "type": "long"
+        },
+        "SCROLLBARSIZE": {
+          "type": "long"
+        },
+        "SCROLLBARSTYLE": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "TEXTCONTRAST": {
+          "type": "long"
+        },
+        "TEXTGRAYHUE": {
+          "type": "long"
+        },
+        "TEXTGRAYSATURATION": {
+          "type": "long"
+        },
+        "TEXTHUEGRAVITY": {
+          "type": "long"
+        },
+        "TEXTLIGHTNESSLIMIT": {
+          "type": "long"
+        },
+        "TEXTREPLACEALLHUES": {
+          "type": "boolean"
+        },
+        "TEXTSATURATIONLIMIT": {
+          "type": "long"
+        },
+        "TEXTSELECTIONHUE": {
+          "type": "long"
+        },
+        "USEDEFAULTSCHEDULE": {
+          "type": "boolean"
+        },
+        "USEIMAGEHOVERANIMATION": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DESCRIPTION": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "GENERATION": {
+      "type": "long"
+    },
+    "ID": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "NAME": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "PUBLISHERCOMMUNITY": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "PUBLISHERID": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "PUBLISHERNAME": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "SCHEMAVERSION": {
+      "tyepe": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    }
+  }
+}

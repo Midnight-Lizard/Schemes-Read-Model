@@ -1,0 +1,26 @@
+CREATE STREAM LikesIntegrationEvents (
+  CorrelationId VARCHAR,
+  Type VARCHAR,
+  Version VARCHAR,
+  RequestTimestamp VARCHAR,
+  UserId VARCHAR,
+  Payload STRUCT<
+    Id VARCHAR,
+    AggregateId VARCHAR,
+    Generation INTEGER,
+    ObjectType VARCHAR,
+    TotalLikes INTEGER,
+    LikedBy ARRAY<VARCHAR>
+  >)
+  WITH (KAFKA_TOPIC = 'likes-integration-events', VALUE_FORMAT = 'JSON');
+
+CREATE STREAM PublicSchemeLikes WITH (
+    KAFKA_TOPIC = 'ksql-stream_read-model_public-schemes_likes',
+    VALUE_FORMAT = 'JSON') AS
+  SELECT
+    Payload->AggregateId as Id,
+    Payload->TotalLikes as Likes,
+    Payload->LikedBy as LikedBy
+  FROM LikesIntegrationEvents
+  WHERE Type = 'LikesChangedEvent' AND Payload->ObjectType = 'public-scheme'
+  PARTITION BY Id;

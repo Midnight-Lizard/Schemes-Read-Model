@@ -1,0 +1,26 @@
+CREATE STREAM FavoritesIntegrationEvents (
+  CorrelationId VARCHAR,
+  Type VARCHAR,
+  Version VARCHAR,
+  RequestTimestamp VARCHAR,
+  UserId VARCHAR,
+  Payload STRUCT<
+    Id VARCHAR,
+    AggregateId VARCHAR,
+    Generation INTEGER,
+    ObjectType VARCHAR,
+    TotalFavorites INTEGER,
+    FavoritedBy ARRAY<VARCHAR>
+  >)
+  WITH (KAFKA_TOPIC = 'favorites-integration-events', VALUE_FORMAT = 'JSON');
+
+CREATE STREAM PublicSchemeFavorites WITH (
+    KAFKA_TOPIC = 'ksql-stream_read-model_public-schemes_favorites',
+    VALUE_FORMAT = 'JSON') AS
+  SELECT
+    Payload->AggregateId as Id,
+    Payload->TotalFavorites as Favorites,
+    Payload->FavoritedBy as FavoritedBy
+  FROM FavoritesIntegrationEvents
+  WHERE Type = 'FavoritesChangedEvent' AND Payload->ObjectType = 'public-scheme'
+  PARTITION BY Id;
