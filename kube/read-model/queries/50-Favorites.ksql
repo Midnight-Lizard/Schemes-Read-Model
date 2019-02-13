@@ -9,7 +9,7 @@ CREATE STREAM FavoritesIntegrationEvents (
     AggregateId VARCHAR,
     Generation INTEGER,
     ObjectType VARCHAR,
-    TotalFavorites INTEGER,
+    TotalFavoriters INTEGER,
     FavoritedBy ARRAY<VARCHAR>
   >)
   WITH (KAFKA_TOPIC = 'favorites-integration-events', VALUE_FORMAT = 'JSON');
@@ -19,7 +19,7 @@ CREATE STREAM PublicSchemeFavorites WITH (
     VALUE_FORMAT = 'JSON') AS
   SELECT
     Payload->AggregateId as Id,
-    Payload->TotalFavorites as Favorites,
+    Payload->TotalFavoriters as Favorites,
     Payload->FavoritedBy as FavoritedBy
   FROM FavoritesIntegrationEvents
   WHERE Type = 'FavoritesChangedEvent' AND Payload->ObjectType = 'public-scheme'
