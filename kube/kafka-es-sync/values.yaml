@@ -17,9 +17,14 @@ env:
   ELASTIC_SEARCH_REQUEST_TIMEOUT_SEC: 60
   ELASTIC_SEARCH_INDEX_NAME: schemes-read-model
   ELASTIC_SEARCH_INDEX_TYPE_NAME: data
+  # KAFKA_TOPICS: |-
+  #   [
+  #     "ksql-table_read-model_public-schemes",
+  #     "ksql-stream_read-model_public-schemes_likes",
+  #     "ksql-stream_read-model_public-schemes_favorites"
+  #   ]
   KAFKA_TOPICS: |-
     [
-      "ksql-table_read-model_public-schemes",
       "ksql-stream_read-model_public-schemes_likes",
       "ksql-stream_read-model_public-schemes_favorites"
     ]
